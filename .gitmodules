@@ -1,0 +1,6 @@
+[submodule "Extensions/DependencyInjection"]
+	path = Extensions/DependencyInjection
+	url = https://github.com/lzl1918/Hake.Extension.DependencyInjection
+[submodule "Extensions/Pipeline"]
+	path = Extensions/Pipeline
+	url = https://github.com/lzl1918/Hake.Extension.Pipeline
