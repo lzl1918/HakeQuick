@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Abstraction.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:Hake.Extension.Pipeline.Abstraction.Fakes.StubIContext">
+            <summary>Stub type of Hake.Extension.Pipeline.Abstraction.IContext</summary>
+        </member>
+        <member name="M:Hake.Extension.Pipeline.Abstraction.Fakes.StubIContext.#ctor">
+            <summary>Initializes a new instance of type StubIContext</summary>
+        </member>
+        <member name="T:Hake.Extension.Pipeline.Abstraction.Fakes.StubIPipeline`3">
+            <summary>Stub type of Hake.Extension.Pipeline.Abstraction.IPipeline`3</summary>
+        </member>
+        <member name="M:Hake.Extension.Pipeline.Abstraction.Fakes.StubIPipeline`3.#ctor">
+            <summary>Initializes a new instance of type StubIPipeline</summary>
+        </member>
+        <member name="F:Hake.Extension.Pipeline.Abstraction.Fakes.StubIPipeline`3.Build">
+            <summary>Sets the stub of IPipeline`3.Build()</summary>
+        </member>
+        <member name="M:Hake.Extension.Pipeline.Abstraction.Fakes.StubIPipeline`3.Hake#Extension#Pipeline#Abstraction#IPipeline{TDelegate,TImplement,TContext}#Build">
+            <summary>Sets the stub of IPipeline`3.Build()</summary>
+        </member>
+        <member name="M:Hake.Extension.Pipeline.Abstraction.Fakes.StubIPipeline`3.Hake#Extension#Pipeline#Abstraction#IPipeline{TDelegate,TImplement,TContext}#Use(System.Func{`0,`0})">
+            <summary>Sets the stub of IPipeline`3.Use(Func`2&lt;!0,!0&gt; component)</summary>
+        </member>
+        <member name="F:Hake.Extension.Pipeline.Abstraction.Fakes.StubIPipeline`3.UseFuncOfT0T0">
+            <summary>Sets the stub of IPipeline`3.Use(Func`2&lt;!0,!0&gt; component)</summary>
+        </member>
+        <member name="T:Hake.Extension.Pipeline.Implementations.Fakes.ShimPipelineBase`3">
+            <summary>Shim type of Hake.Extension.Pipeline.Implementations.PipelineBase`3</summary>
+        </member>
+        <member name="M:Hake.Extension.Pipeline.Implementations.Fakes.ShimPipelineBase`3.#ctor(Hake.Extension.Pipeline.Implementations.PipelineBase{`0,`1,`2})">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:Hake.Extension.Pipeline.Implementations.Fakes.ShimPipelineBase`3.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:Hake.Extension.Pipeline.Implementations.Fakes.ShimPipelineBase`3.AllInstances.Build">
+            <summary>Sets the shim of PipelineBase`3.Build()</summary>
+        </member>
+        <member name="P:Hake.Extension.Pipeline.Implementations.Fakes.ShimPipelineBase`3.AllInstances.UseFuncOfT0T0">
+            <summary>Sets the shim of PipelineBase`3.Use(Func`2&lt;!0,!0&gt; component)</summary>
+        </member>
+        <member name="M:Hake.Extension.Pipeline.Implementations.Fakes.ShimPipelineBase`3.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:Hake.Extension.Pipeline.Implementations.Fakes.ShimPipelineBase`3.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:Hake.Extension.Pipeline.Implementations.Fakes.ShimPipelineBase`3.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:Hake.Extension.Pipeline.Implementations.Fakes.ShimPipelineBase`3.Bind(Hake.Extension.Pipeline.Abstraction.IPipeline{`0,`1,`2})">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:Hake.Extension.Pipeline.Implementations.Fakes.ShimPipelineBase`3.Build">
+            <summary>Sets the shim of PipelineBase`3.Build()</summary>
+        </member>
+        <member name="P:Hake.Extension.Pipeline.Implementations.Fakes.ShimPipelineBase`3.ConstructorT0">
+            <summary>Sets the shim of PipelineBase`3.PipelineBase`3(!0 baseComponent)</summary>
+        </member>
+        <member name="P:Hake.Extension.Pipeline.Implementations.Fakes.ShimPipelineBase`3.UseFuncOfT0T0">
+            <summary>Sets the shim of PipelineBase`3.Use(Func`2&lt;!0,!0&gt; component)</summary>
+        </member>
+        <member name="T:Hake.Extension.Pipeline.Implementations.Fakes.StubPipelineBase`3">
+            <summary>Stub type of Hake.Extension.Pipeline.Implementations.PipelineBase`3</summary>
+        </member>
+        <member name="M:Hake.Extension.Pipeline.Implementations.Fakes.StubPipelineBase`3.#ctor(`0)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Hake.Extension.Pipeline.Implementations.Fakes.StubPipelineBase`3.Build">
+            <summary>Sets the stub of PipelineBase`3.Build()</summary>
+        </member>
+        <member name="F:Hake.Extension.Pipeline.Implementations.Fakes.StubPipelineBase`3.Build01">
+            <summary>Sets the stub of PipelineBase`3.Build()</summary>
+        </member>
+        <member name="P:Hake.Extension.Pipeline.Implementations.Fakes.StubPipelineBase`3.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:Hake.Extension.Pipeline.Implementations.Fakes.StubPipelineBase`3.InitializeStub">
+            <summary>Initializes a new instance of type StubPipelineBase</summary>
+        </member>
+        <member name="P:Hake.Extension.Pipeline.Implementations.Fakes.StubPipelineBase`3.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:Hake.Extension.Pipeline.Implementations.Fakes.StubPipelineBase`3.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="M:Hake.Extension.Pipeline.Implementations.Fakes.StubPipelineBase`3.Use(System.Func{`0,`0})">
+            <summary>Sets the stub of PipelineBase`3.Use(Func`2&lt;!0,!0&gt; component)</summary>
+        </member>
+        <member name="F:Hake.Extension.Pipeline.Implementations.Fakes.StubPipelineBase`3.UseFuncOfT0T0">
+            <summary>Sets the stub of PipelineBase`3.Use(Func`2&lt;!0,!0&gt; component)</summary>
+        </member>
+    </members>
+</doc>

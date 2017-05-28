@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{74F1B85E-0D29-4642-999E-187930F177DE}</ProjectGuid>
+    <ProjectGuid>{00835387-4F09-43B9-BFE0-68823A15F29B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HakeQuick.Abstraction</RootNamespace>
-    <AssemblyName>Abstraction</AssemblyName>
+    <RootNamespace>HakeQuick.Implementation</RootNamespace>
+    <AssemblyName>BaseImplement</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,36 +30,37 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Abstraction.Fakes">
-      <HintPath>FakesAssemblies\Abstraction.Fakes.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\ActionBase.cs" />
-    <Compile Include="Action\ExecutionRequestedEventArgs.cs" />
-    <Compile Include="Base\Extensions\AppBuilderExtensions.cs" />
-    <Compile Include="Base\Extensions\HostBuilderExtensions.cs" />
-    <Compile Include="Plugin\Plugin.cs" />
-    <Compile Include="Base\ICommand.cs" />
-    <Compile Include="Base\IQuickContext.cs" />
-    <Compile Include="Base\IAppBuilder.cs" />
-    <Compile Include="Base\IHost.cs" />
-    <Compile Include="Base\IHostBuilder.cs" />
-    <Compile Include="Base\Extensions\QuickContextExtension.cs" />
-    <Compile Include="MVVM\ViewModelBase.cs" />
+    <Compile Include="Base\AppBuilder.cs" />
+    <Compile Include="Base\Command.cs" />
+    <Compile Include="Base\Host.cs" />
+    <Compile Include="Base\HostBuilder.cs" />
+    <Compile Include="Base\QuickContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ICancellationProvider.cs" />
-    <Compile Include="Services\ICurrentEnvironment.cs" />
-    <Compile Include="Services\IProgramContext.cs" />
+    <Compile Include="Services\HotKey\HotKey.cs" />
+    <Compile Include="Services\HotKey\HotKeyExtensions.cs" />
+    <Compile Include="Services\HotKey\IHotKey.cs" />
+    <Compile Include="Services\HotKey\KeyFlags.cs" />
+    <Compile Include="Services\ProgramContext\IProgramContextFactory.cs" />
+    <Compile Include="Services\ProgramContext\ProgramContext.cs" />
+    <Compile Include="Services\TerminationNotifier\ITerminationNotifier.cs" />
+    <Compile Include="Services\TerminationNotifier\TerminationNotifier.cs" />
+    <Compile Include="Services\Tray\ITray.cs" />
+    <Compile Include="Services\Tray\Tray.cs" />
+    <Compile Include="Services\Window\IQuickWindow.cs" />
+    <Compile Include="Services\Window\QuickWindowExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Hake.Extensions\DependencyInjection\Abstraction\Hake.Extension.DependencyInjection.Abstraction.csproj">
@@ -74,9 +75,14 @@
       <Project>{4f01612a-436b-43de-a119-6f33b85dbd19}</Project>
       <Name>Hake.Extension.Pipeline.Abstraction</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\Internal\" />
+    <ProjectReference Include="..\Abstraction\Abstraction.csproj">
+      <Project>{74f1b85e-0d29-4642-999e-187930f177de}</Project>
+      <Name>Abstraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{a763570a-c121-4b9e-b240-490300a03244}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

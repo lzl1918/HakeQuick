@@ -11,13 +11,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyInjection", "Depe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipeline", "Pipeline", "{4315BB97-4874-4CFA-BFB3-3D8E1505C83B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abstraction", "..\Hake.Extensions\DependencyInjection\Abstraction\Abstraction.csproj", "{9CB7600C-0807-41B1-A075-F38D0C3286DD}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultImplementations", "..\Hake.Extensions\DependencyInjection\DefaultImplementations\DefaultImplementations.csproj", "{AAD49EE5-594C-44A9-ADA9-99374654B6BE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abstraction", "..\Hake.Extensions\Pipeline\Abstraction\Abstraction.csproj", "{4E20ABE8-8D26-473D-AFBE-8D16F2E5797E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstraction", "Abstraction\Abstraction.csproj", "{74F1B85E-0D29-4642-999E-187930F177DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hake.Extension.DependencyInjection.Abstraction", "..\Hake.Extensions\DependencyInjection\Abstraction\Hake.Extension.DependencyInjection.Abstraction.csproj", "{399FAFC3-C113-4B0B-BBC6-CD7D051864E2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hake.Extension.DependencyInjection.Implementations", "..\Hake.Extensions\DependencyInjection\Implementations\Hake.Extension.DependencyInjection.Implementations.csproj", "{502D4BDA-8D93-4552-A23B-9A8FC6705308}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hake.Extension.Pipeline.Abstraction", "..\Hake.Extensions\Pipeline\Abstraction\Hake.Extension.Pipeline.Abstraction.csproj", "{4F01612A-436B-43DE-A119-6F33B85DBD19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseImplement", "BaseImplement\BaseImplement.csproj", "{00835387-4F09-43B9-BFE0-68823A15F29B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{94029E4F-460E-473E-8361-BB01A24DD0B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{A763570A-C121-4B9E-B240-490300A03244}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin", "TestPlugin\TestPlugin.csproj", "{2EFCE9AF-27AB-4D10-8A5E-8179C8524F06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,22 +37,34 @@ Global
 		{93DD3060-5F46-45F9-8E55-8ED18153B17A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93DD3060-5F46-45F9-8E55-8ED18153B17A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93DD3060-5F46-45F9-8E55-8ED18153B17A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9CB7600C-0807-41B1-A075-F38D0C3286DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CB7600C-0807-41B1-A075-F38D0C3286DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CB7600C-0807-41B1-A075-F38D0C3286DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CB7600C-0807-41B1-A075-F38D0C3286DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AAD49EE5-594C-44A9-ADA9-99374654B6BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AAD49EE5-594C-44A9-ADA9-99374654B6BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AAD49EE5-594C-44A9-ADA9-99374654B6BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AAD49EE5-594C-44A9-ADA9-99374654B6BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4E20ABE8-8D26-473D-AFBE-8D16F2E5797E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E20ABE8-8D26-473D-AFBE-8D16F2E5797E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E20ABE8-8D26-473D-AFBE-8D16F2E5797E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E20ABE8-8D26-473D-AFBE-8D16F2E5797E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{74F1B85E-0D29-4642-999E-187930F177DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{74F1B85E-0D29-4642-999E-187930F177DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74F1B85E-0D29-4642-999E-187930F177DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74F1B85E-0D29-4642-999E-187930F177DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{399FAFC3-C113-4B0B-BBC6-CD7D051864E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{399FAFC3-C113-4B0B-BBC6-CD7D051864E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{399FAFC3-C113-4B0B-BBC6-CD7D051864E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{399FAFC3-C113-4B0B-BBC6-CD7D051864E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{502D4BDA-8D93-4552-A23B-9A8FC6705308}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{502D4BDA-8D93-4552-A23B-9A8FC6705308}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{502D4BDA-8D93-4552-A23B-9A8FC6705308}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{502D4BDA-8D93-4552-A23B-9A8FC6705308}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F01612A-436B-43DE-A119-6F33B85DBD19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F01612A-436B-43DE-A119-6F33B85DBD19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F01612A-436B-43DE-A119-6F33B85DBD19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F01612A-436B-43DE-A119-6F33B85DBD19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00835387-4F09-43B9-BFE0-68823A15F29B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00835387-4F09-43B9-BFE0-68823A15F29B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00835387-4F09-43B9-BFE0-68823A15F29B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00835387-4F09-43B9-BFE0-68823A15F29B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A763570A-C121-4B9E-B240-490300A03244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A763570A-C121-4B9E-B240-490300A03244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A763570A-C121-4B9E-B240-490300A03244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A763570A-C121-4B9E-B240-490300A03244}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EFCE9AF-27AB-4D10-8A5E-8179C8524F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EFCE9AF-27AB-4D10-8A5E-8179C8524F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EFCE9AF-27AB-4D10-8A5E-8179C8524F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EFCE9AF-27AB-4D10-8A5E-8179C8524F06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,8 +72,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A616EFEE-0983-4DD1-AC32-707D94A46401} = {5DA32049-54EA-475F-91F9-146419DD3B81}
 		{4315BB97-4874-4CFA-BFB3-3D8E1505C83B} = {5DA32049-54EA-475F-91F9-146419DD3B81}
-		{9CB7600C-0807-41B1-A075-F38D0C3286DD} = {A616EFEE-0983-4DD1-AC32-707D94A46401}
-		{AAD49EE5-594C-44A9-ADA9-99374654B6BE} = {A616EFEE-0983-4DD1-AC32-707D94A46401}
-		{4E20ABE8-8D26-473D-AFBE-8D16F2E5797E} = {4315BB97-4874-4CFA-BFB3-3D8E1505C83B}
+		{399FAFC3-C113-4B0B-BBC6-CD7D051864E2} = {A616EFEE-0983-4DD1-AC32-707D94A46401}
+		{502D4BDA-8D93-4552-A23B-9A8FC6705308} = {A616EFEE-0983-4DD1-AC32-707D94A46401}
+		{4F01612A-436B-43DE-A119-6F33B85DBD19} = {4315BB97-4874-4CFA-BFB3-3D8E1505C83B}
+		{2EFCE9AF-27AB-4D10-8A5E-8179C8524F06} = {94029E4F-460E-473E-8361-BB01A24DD0B2}
 	EndGlobalSection
 EndGlobal
