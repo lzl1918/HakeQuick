@@ -1,4 +1,5 @@
 ﻿using HakeQuick.Abstraction.MVVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,12 +53,56 @@ namespace HakeQuick.Abstraction.Action
 
     public sealed class PlaceholderAction : ActionBase
     {
-
+        public PlaceholderAction(BitmapImage icon, string title, string subtitle)
+        {
+            IsExecutable = false;
+            Icon = icon;
+            Title = title;
+            Subtitle = subtitle;
+        }
     }
 
     public sealed class ActionUpdateResult
     {
-        public Task UpdateTask { get; private set; }
-        public PlaceholderAction Placeholder { get; private set; }
+        public ActionBase Action { get; }
+        public ActionPriority Priority { get; }
+
+        public ActionUpdateResult(ActionBase action, ActionPriority priority)
+        {
+            Action = action;
+            Priority = priority;
+        }
+    }
+
+    public sealed class AsyncActionUpdate
+    {
+        public Task<ActionUpdateResult> UpdateTask { get; }
+        public PlaceholderAction Placeholder { get; }
+        public ActionPriority Priority { get; }
+
+        private AsyncActionUpdate(PlaceholderAction placeholder, ActionPriority priority, Func<ActionUpdateResult> updateTask)
+        {
+            if (placeholder == null)
+                throw new ArgumentNullException(nameof(placeholder));
+
+            Priority = priority;
+            Placeholder = placeholder;
+            UpdateTask = new Task<ActionUpdateResult>(updateTask);
+            UpdateTask.Start();
+        }
+
+        public static AsyncActionUpdate Create(PlaceholderAction placeholder, ActionPriority priority, Func<ActionUpdateResult> task)
+        {
+            return new AsyncActionUpdate(placeholder, priority, task);
+        }
+        public static AsyncActionUpdate Create(PlaceholderAction placeholder, ActionPriority priority, Func<Task<ActionUpdateResult>> task)
+        {
+            return new AsyncActionUpdate(placeholder, priority, ()=>
+            {
+                Task<ActionUpdateResult> tsk = task();
+                tsk.Wait();
+                return tsk.Result;
+            });
+        }
     }
 }

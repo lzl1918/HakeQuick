@@ -10,7 +10,7 @@ namespace HakeQuick.Implementation.Base
     internal sealed class Command : ICommand
     {
         public string Raw { get; }
-
+        public string Identity { get; }
         public string Action { get; }
         public string ActionPost { get; }
         public Dictionary<string, object> NamedArguments { get; }

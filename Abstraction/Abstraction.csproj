@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Action\ActionBase.cs" />
     <Compile Include="Action\ExecutionRequestedEventArgs.cs" />
+    <Compile Include="Action\Attributes.cs" />
     <Compile Include="Base\Extensions\AppBuilderExtensions.cs" />
     <Compile Include="Base\Extensions\HostBuilderExtensions.cs" />
     <Compile Include="Plugin\Plugin.cs" />

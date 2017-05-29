@@ -16,6 +16,7 @@ namespace HakeQuick
         public static void Main(string[] args)
         {
             IHost host = new HostBuilder()
+                .UseEnvironment(plugin: "/plugins", config: "/config")
                 .UseHotKey(key: Key.Q, flags: KeyFlags.Control)
                 .UseWindow<DefaultWindow>()
                 .UseConfiguration<Startup>()

@@ -84,6 +84,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Hake.Extensions\DependencyInjection\Abstraction\Hake.Extension.DependencyInjection.Abstraction.csproj">
+      <Project>{399fafc3-c113-4b0b-bbc6-cd7d051864e2}</Project>
+      <Name>Hake.Extension.DependencyInjection.Abstraction</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Hake.Extensions\Pipeline\Abstraction\Hake.Extension.Pipeline.Abstraction.csproj">
       <Project>{4F01612A-436B-43DE-A119-6F33B85DBD19}</Project>
       <Name>Hake.Extension.Pipeline.Abstraction</Name>

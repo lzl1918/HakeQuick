@@ -48,7 +48,13 @@
     <Compile Include="Base\Host.cs" />
     <Compile Include="Base\HostBuilder.cs" />
     <Compile Include="Base\QuickContext.cs" />
+    <Compile Include="Components\PluginLoader\IPluginProvider.cs" />
+    <Compile Include="Components\PluginLoader\PluginLoader.cs" />
+    <Compile Include="Components\PluginLoader\PluginLoaderExtensions.cs" />
+    <Compile Include="Components\PluginLoader\PluginProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CurrentEnvironment\CurrentEnvironment.cs" />
+    <Compile Include="Services\CurrentEnvironment\CurrentEnvironmentExtensions.cs" />
     <Compile Include="Services\HotKey\HotKey.cs" />
     <Compile Include="Services\HotKey\HotKeyExtensions.cs" />
     <Compile Include="Services\HotKey\IHotKey.cs" />

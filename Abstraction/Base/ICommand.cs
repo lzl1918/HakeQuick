@@ -10,6 +10,7 @@ namespace HakeQuick.Abstraction.Base
     public interface ICommand
     {
         string Raw { get; }
+        string Identity { get; }
         string Action { get; }
         string ActionPost { get; }
 
