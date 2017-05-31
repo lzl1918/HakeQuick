@@ -55,7 +55,32 @@ namespace HakeQuick
             IsVisibleChanged += OnIsVisibleChanged;
             list_actions.PreviewMouseLeftButtonDown += OnListPreviewLeftMouseButtonDown;
             Deactivated += OnDeactived;
+            PreviewKeyDown += OnPreviewKeyDown;
             ElementHost.EnableModelessKeyboardInterop(this);
+        }
+
+        private void OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            Console.WriteLine("key: {0}", e.Key);
+            if (e.Handled) return;
+            if (m_actions == null || m_actions.Count <= 0 || IsVisible == false) return;
+            if (e.Key == Key.Down)
+            {
+                MoveToNextAction();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Up)
+            {
+                MoveToPreviousAction();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Enter)
+            {
+                ActionBase action = list_actions.SelectedItem as ActionBase;
+                if (!action.IsExecutable) { e.Handled = true; return; }
+                ExecutionRequested?.Invoke(this, new ExecutionRequestedEventArgs(action));
+                e.Handled = true;
+            }
         }
 
         private void OnDeactived(object sender, EventArgs e)
@@ -73,7 +98,7 @@ namespace HakeQuick
             if (e.Handled)
                 return;
 
-            TextChanged?.Invoke(this, new TextUpdatedEventArgs(null, textbox_input.Text, false, TextUpdatedReason.UserInput));
+            TextChanged?.Invoke(this, new TextUpdatedEventArgs(textbox_input.Text));
         }
 
         private void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -84,6 +109,7 @@ namespace HakeQuick
         public void ClearInput()
         {
             textbox_input.Text = "";
+            TextChanged?.Invoke(this, new TextUpdatedEventArgs(textbox_input.Text));
         }
 
         public void HideWindow()
@@ -117,6 +143,81 @@ namespace HakeQuick
             Show();
             Activate();
             textbox_input.Focus();
+        }
+
+        private void MoveToNextAction()
+        {
+            int index = list_actions.SelectedIndex;
+            if (index == -1)
+            {
+                for (int i = 0; i < m_actions.Count; i++)
+                {
+                    if (m_actions[i].IsExecutable)
+                    {
+                        list_actions.SelectedIndex = i;
+                        list_actions.ScrollIntoView(list_actions.SelectedItem);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                int oindex = index;
+                do
+                {
+                    index++;
+                    if (index < 0)
+                        index = m_actions.Count - 1;
+                    if (index >= m_actions.Count)
+                        index = 0;
+                    if (index == oindex)
+                        break;
+                } while (!m_actions[index].IsExecutable);
+                if (m_actions[index].IsExecutable)
+                {
+                    list_actions.SelectedIndex = index;
+                    list_actions.ScrollIntoView(list_actions.SelectedItem);
+                }
+                else
+                    list_actions.SelectedIndex = -1;
+            }
+        }
+        private void MoveToPreviousAction()
+        {
+            int index = list_actions.SelectedIndex;
+            if (index == -1)
+            {
+                for (int i = m_actions.Count - 1; i >= 0; i--)
+                {
+                    if (m_actions[i].IsExecutable)
+                    {
+                        list_actions.SelectedIndex = i;
+                        list_actions.ScrollIntoView(list_actions.SelectedItem);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                int oindex = index;
+                do
+                {
+                    index--;
+                    if (index < 0)
+                        index = m_actions.Count - 1;
+                    if (index >= m_actions.Count)
+                        index = 0;
+                    if (index == oindex)
+                        break;
+                } while (!m_actions[index].IsExecutable);
+                if (m_actions[index].IsExecutable)
+                {
+                    list_actions.SelectedIndex = index;
+                    list_actions.ScrollIntoView(list_actions.SelectedItem);
+                }
+                else
+                    list_actions.SelectedIndex = -1;
+            }
         }
     }
 }

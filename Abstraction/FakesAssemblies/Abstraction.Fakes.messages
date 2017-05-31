@@ -1,2 +1,0 @@
-G:\Github\HakeQuick\Abstraction\Fakes\Abstraction.fakes : warning : Cannot generate shim for Hake.Extension.Pipeline.Abstraction.IContext: type is an interface.
-G:\Github\HakeQuick\Abstraction\Fakes\Abstraction.fakes : warning : Cannot generate shim for Hake.Extension.Pipeline.Abstraction.IPipeline`3: type is an interface.

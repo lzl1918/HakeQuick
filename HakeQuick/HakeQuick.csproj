@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\build\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -28,7 +28,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\build\release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -52,6 +52,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\ActionOpacityConverter.cs" />
     <Compile Include="DefaultWindow.xaml.cs">
       <DependentUpon>DefaultWindow.xaml</DependentUpon>
     </Compile>
@@ -92,11 +93,11 @@
       <Project>{4F01612A-436B-43DE-A119-6F33B85DBD19}</Project>
       <Name>Hake.Extension.Pipeline.Abstraction</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Abstraction\Abstraction.csproj">
+    <ProjectReference Include="..\Framework\Abstraction\Abstraction.csproj">
       <Project>{74f1b85e-0d29-4642-999e-187930f177de}</Project>
       <Name>Abstraction</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BaseImplement\BaseImplement.csproj">
+    <ProjectReference Include="..\Framework\BaseImplement\BaseImplement.csproj">
       <Project>{00835387-4f09-43b9-bfe0-68823a15f29b}</Project>
       <Name>BaseImplement</Name>
     </ProjectReference>

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HakeQuick"
+        xmlns:cvts="clr-namespace:HakeQuick.Converters"
         mc:Ignorable="d"
         AllowsTransparency="True"
         Background="{x:Null}"
@@ -13,6 +14,9 @@
         ResizeMode="NoResize"
         Topmost="True"
         WindowStyle="None">
+    <Window.Resources>
+        <cvts:ActionOpacityConverter x:Key="ActionOpacityConverter" />
+    </Window.Resources>
     <Grid>
         <Border Background="#E5FFFFFF" CornerRadius="8">
             <Grid>
@@ -30,8 +34,44 @@
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Border x:Name="bd" SnapsToDevicePixels="True" CornerRadius="8">
+                                            <Grid x:Name="PART_Root" Margin="0, 2">
+                                                <GridViewRowPresenter />
+                                                <ContentPresenter x:Name="content" />
+                                            </Grid>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="bd" Property="Background" Value="#BBB" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
                         </Style>
                     </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="4" Opacity="{Binding Converter={StaticResource ActionOpacityConverter}}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Icon}" Margin="4, 4"/>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock FontSize="18" FontWeight="SemiBold" Text="{Binding Title}" Margin="8, 2"/>
+                                    <TextBlock FontSize="14" Grid.Row="1" Foreground="Gray" Text="{Binding Subtitle}" Margin="8, 2"/>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
 
             </Grid>

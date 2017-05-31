@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A763570A-C121-4B9E-B240-490300A03244}</ProjectGuid>
+    <ProjectGuid>{2EFCE9AF-27AB-4D10-8A5E-8179C8524F06}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HakeQuick.Helpers</RootNamespace>
-    <AssemblyName>Helpers</AssemblyName>
+    <RootNamespace>HakeQuick.Plugins.TestPlugin</RootNamespace>
+    <AssemblyName>TestPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\build\debug\</OutputPath>
+    <OutputPath>..\..\build\debug\plugins\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -24,13 +24,15 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\build\release\</OutputPath>
+    <OutputPath>..\..\build\release\plugins\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationCore">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\PresentationCore.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,11 +41,28 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyResourceHelper.cs" />
+    <Compile Include="APlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Hake.Extensions\Pipeline\Abstraction\Hake.Extension.Pipeline.Abstraction.csproj">
+      <Project>{4F01612A-436B-43DE-A119-6F33B85DBD19}</Project>
+      <Name>Hake.Extension.Pipeline.Abstraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Abstraction\Abstraction.csproj">
+      <Project>{74f1b85e-0d29-4642-999e-187930f177de}</Project>
+      <Name>Abstraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Helpers\Helpers.csproj">
+      <Project>{a763570a-c121-4b9e-b240-490300a03244}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

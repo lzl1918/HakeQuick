@@ -14,6 +14,8 @@ namespace HakeQuick.Helpers
         public static BitmapImage LoadImage(this Assembly assembly, string resource)
         {
             Stream stream = LoadStream(assembly, resource);
+            if (stream == null)
+                return null;
             BitmapImage image = new BitmapImage();
             image.BeginInit();
             image.StreamSource = stream;
