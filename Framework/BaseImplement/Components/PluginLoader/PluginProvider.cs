@@ -244,7 +244,7 @@ namespace HakeQuick.Implementation.Components.PluginLoader
 
                             // ExplicitCallAttribute
                             {
-                                ExplictCallAttribute explicitAttributes = method.GetCustomAttribute<ExplictCallAttribute>();
+                                ExplicitCallAttribute explicitAttributes = method.GetCustomAttribute<ExplicitCallAttribute>();
                                 if (explicitAttributes != null)
                                 {
                                     explictMethods.Add(method);

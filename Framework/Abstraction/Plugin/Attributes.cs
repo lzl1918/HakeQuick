@@ -53,9 +53,9 @@ namespace HakeQuick.Abstraction.Plugin
     }
 
     [AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
-    public sealed class ExplictCallAttribute : Attribute
+    public sealed class ExplicitCallAttribute : Attribute
     {
-        public ExplictCallAttribute()
+        public ExplicitCallAttribute()
         {
         }
         

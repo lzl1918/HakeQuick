@@ -219,5 +219,11 @@ namespace HakeQuick
                     list_actions.SelectedIndex = -1;
             }
         }
+
+        public void OnActionUpdateCompleted()
+        {
+            list_actions.SelectedIndex = -1;
+            MoveToNextAction();
+        }
     }
 }

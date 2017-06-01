@@ -12,21 +12,6 @@ using HakeQuick.Implementation.Services.Tray;
 
 namespace HakeQuick
 {
-    public sealed class TestAction : ActionBase
-    {
-        public TestAction(string title, string subcontent)
-        {
-            Title = title;
-            Subtitle = subcontent;
-            IsExecutable = true;
-        }
-
-        public void Invoke(ITray tray)
-        {
-            tray.SendNotification(1000, "test", "content");
-        }
-    }
-
     public sealed class Startup
     {
         public void ConfigureServices(IServiceCollection services)

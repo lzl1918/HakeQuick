@@ -33,5 +33,7 @@ namespace HakeQuick.Implementation.Services.Window
         void ShowWindow(IProgramContext context);
 
         void ClearInput();
+
+        void OnActionUpdateCompleted();
     }
 }

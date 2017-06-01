@@ -128,8 +128,8 @@ namespace HakeQuick.Implementation.Base
                     if (lastContext.Command.UnnamedArguments.Count > 0)
                         lastContext.Command.UnnamedArguments.CopyTo(args, 1);
                     ObjectFactory.InvokeMethod(action, "Invoke", services, lastContext.Command.NamedArguments, args);
-
                 }
+                window.HideWindow();
             }
             catch (Exception ex)
             {
@@ -158,7 +158,14 @@ namespace HakeQuick.Implementation.Base
                 syncContext.Send(s => actions.Clear(), null);
                 await app(context);
                 lastContext = context;
-                syncContext.Send(s => waitTask = lastContext.WaitResults(actions), null);
+                syncContext.Send(s => waitTask = lastContext.WaitResults(actions).ContinueWith(tsk =>
+                {
+                    if (tsk.Status == TaskStatus.RanToCompletion)
+                    {
+                        syncContext.Send(st => window.OnActionUpdateCompleted(), null);
+                    }
+                }), null);
+
                 mutex.Set();
             });
         }

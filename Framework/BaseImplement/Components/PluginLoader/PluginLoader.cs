@@ -13,7 +13,6 @@ namespace HakeQuick.Implementation.Components.PluginLoader
 {
     internal sealed class PluginLoader
     {
-
         private IPluginProvider plugins;
         public PluginLoader(IPluginProvider plugins)
         {
@@ -34,10 +33,6 @@ namespace HakeQuick.Implementation.Components.PluginLoader
                 {
                     try
                     {
-                        if (method.Name == "TestC")
-                        {
-                            int m = 0;
-                        }
                         object returnvalue = ObjectFactory.InvokeMethod(record.Instance, method, services, context.Command.NamedArguments, args);
                         if (returnvalue == null)
                             continue;
