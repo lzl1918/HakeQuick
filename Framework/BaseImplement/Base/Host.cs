@@ -76,6 +76,7 @@ namespace HakeQuick.Implementation.Base
             }
             pool.EnterScope();
             IProgramContext context = services.GetService<IProgramContext>();
+            window.ClearInput();
             window.ShowWindow(context);
         }
 
