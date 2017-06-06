@@ -119,6 +119,26 @@ namespace HakeQuick.Implementation.Components.PluginLoader
                             }
                         }
                     }
+                    List<IgnoreIdentityRecords> ignoreIdentityRecords;
+                    if (ignoreIdentityEntry.TryGetValue(command.Identity, out ignoreIdentityRecords))
+                    {
+                        foreach (IgnoreIdentityRecords record in ignoreIdentityRecords)
+                        {
+                            List<MethodInfo> methods;
+                            if (temp_results.TryGetValue(record.Instance, out methods) == false)
+                            {
+                                methods = new List<MethodInfo>();
+                                temp_results.Add(record.Instance, methods);
+                            }
+                            foreach (MethodInfo method in record.Methods)
+                            {
+                                if (methodMap.Contains(method.GetHashCode()))
+                                    continue;
+                                methods.Add(method);
+                                methodMap.Add(method.GetHashCode());
+                            }
+                        }
+                    }
                 }
                 else
                 {

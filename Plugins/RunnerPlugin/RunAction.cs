@@ -1,16 +1,17 @@
 ﻿using HakeQuick.Abstraction.Action;
 using HakeQuick.Abstraction.Base;
+using HakeQuick.Abstraction.Services;
 using System;
 using System.Diagnostics;
 using System.Windows.Media.Imaging;
 
 namespace RunnerPlugin
 {
-    public sealed class RunAction : ActionBase
+    internal sealed class RunCommandAction : ActionBase
     {
         public string RunCommand { get; }
         private string commandPath;
-        public RunAction(string run, string path, string iconPath)
+        public RunCommandAction(string run, string path, string iconPath)
         {
             path = path ?? "";
             path = path.Trim();
@@ -35,12 +36,13 @@ namespace RunnerPlugin
             }
         }
 
-        public void Invoke(ICommand command)
+        public void Invoke(IProgramContext progContext, ICommand command)
         {
             string procname = RunCommand;
             if (commandPath.Length > 0)
                 procname = commandPath;
             ProcessStartInfo psi = new ProcessStartInfo(procname);
+            psi.WorkingDirectory = Helper.CurrentWorkingDirectoryOrDefault(progContext);
             try
             {
                 Process.Start(psi);

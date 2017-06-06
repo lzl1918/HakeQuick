@@ -61,7 +61,6 @@ namespace HakeQuick
 
         private void OnPreviewKeyDown(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("key: {0}", e.Key);
             if (e.Handled) return;
             if (m_actions == null || m_actions.Count <= 0 || IsVisible == false) return;
             if (e.Key == Key.Down)

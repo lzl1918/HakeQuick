@@ -27,23 +27,23 @@ namespace HakeQuick.Implementation.Services.ProgramContext
 
 
         public Process CurrentProcess { get; }
-        public IntPtr WindowHandler { get; }
-        public IntPtr DesktopHandler { get; }
+        public IntPtr WindowHandle { get; }
+        public IntPtr DesktopHandle { get; }
         public int ThreadId { get; }
         public int ProcessId { get; }
-        public bool IsDesktop { get { return WindowHandler == DesktopHandler; } }
+        public bool IsDesktop { get { return WindowHandle == DesktopHandle; } }
         public RECT WindowPosition { get; }
 
         public ProgramContext()
         {
             int pid;
-            WindowHandler = Win32.GetForegroundWindow();
-            ThreadId = Win32.GetWindowThreadProcessId(WindowHandler, out pid);
+            WindowHandle = Win32.GetForegroundWindow();
+            ThreadId = Win32.GetWindowThreadProcessId(WindowHandle, out pid);
             ProcessId = pid;
             CurrentProcess = Process.GetProcessById(pid);
-            DesktopHandler = Win32.GetDesktopWindow();
+            DesktopHandle = Win32.GetDesktopWindow();
             RECT rect;
-            Win32.GetWindowRect(WindowHandler, out rect);
+            Win32.GetWindowRect(WindowHandle, out rect);
             WindowPosition = rect;
         }
     }

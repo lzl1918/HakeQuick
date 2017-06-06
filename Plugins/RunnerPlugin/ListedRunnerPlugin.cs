@@ -13,7 +13,7 @@ namespace RunnerPlugin
 {
     public sealed class ListedRunnerPlugin : QuickPlugin
     {
-        private List<RunAction> actions = new List<RunAction>();
+        private List<RunCommandAction> actions = new List<RunCommandAction>();
 
         private static string[] PREDEFINED_COMMANDS = {
             "regedit", "winword", "excel", "powerpnt", "code", "explorer"
@@ -42,9 +42,9 @@ namespace RunnerPlugin
                     foreach (CommandData cmd in data)
                     {
                         if (cmd.IconPath != null)
-                            actions.Add(new RunAction(cmd.Command, cmd.ExePath, Path.Combine(iconPath, cmd.IconPath)));
+                            actions.Add(new RunCommandAction(cmd.Command, cmd.ExePath, Path.Combine(iconPath, cmd.IconPath)));
                         else
-                            actions.Add(new RunAction(cmd.Command, cmd.ExePath, null));
+                            actions.Add(new RunCommandAction(cmd.Command, cmd.ExePath, null));
                     }
                 }
                 catch
@@ -63,7 +63,7 @@ namespace RunnerPlugin
                         ExePath = null,
                         IconPath = null
                     });
-                    actions.Add(new RunAction(command, null, null));
+                    actions.Add(new RunCommandAction(command, null, null));
                 }
                 FileStream stream = File.Create(filename);
                 string json = JsonConvert.SerializeObject(data, Formatting.Indented);
@@ -84,7 +84,7 @@ namespace RunnerPlugin
             List<ActionUpdateResult> updateResult = new List<ActionUpdateResult>();
 
             string identity = command.Identity;
-            foreach (RunAction action in actions)
+            foreach (RunCommandAction action in actions)
             {
                 if (action.RunCommand.Length >= identity.Length && action.RunCommand.StartsWith(identity))
                 {

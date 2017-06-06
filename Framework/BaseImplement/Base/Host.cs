@@ -140,6 +140,7 @@ namespace HakeQuick.Implementation.Base
         private void OnWindowTextChanged(object sender, TextUpdatedEventArgs e)
         {
             SynchronizationContext syncContext = SynchronizationContext.Current;
+
             Task.Run(async () =>
             {
                 mutex.WaitOne();
@@ -155,17 +156,14 @@ namespace HakeQuick.Implementation.Base
                 Command command = new Command(e.Value);
                 IInternalContext context = new QuickContext(command);
                 AppDelegate app = appBuilder.Build();
-                syncContext.Send(s => actions.Clear(), null);
                 await app(context);
                 lastContext = context;
-                syncContext.Send(s => waitTask = lastContext.WaitResults(actions).ContinueWith(tsk =>
-                {
-                    if (tsk.Status == TaskStatus.RanToCompletion)
+                syncContext.Send(s =>
+                    waitTask = lastContext.WaitResults(actions).ContinueWith(tsk =>
                     {
-                        syncContext.Send(st => window.OnActionUpdateCompleted(), null);
-                    }
-                }), null);
-
+                        if (tsk.Status == TaskStatus.RanToCompletion)
+                            syncContext.Send(st => window.OnActionUpdateCompleted(), null);
+                    }), null);
                 mutex.Set();
             });
         }

@@ -58,11 +58,6 @@ namespace HakeQuick.Abstraction.Base
         public ICancellationProvider CancellationProvider { get { return InternalCancellationProvider; } }
         public IInternalCancellationProvider InternalCancellationProvider { get; }
 
-        public IEnumerable<ActionBase> RetriveActions()
-        {
-            return actions.Select(item => item.Action);
-        }
-
         public void AddAction(ActionBase action, ActionPriority priority = ActionPriority.Normal)
         {
             if (action == null)
@@ -77,11 +72,6 @@ namespace HakeQuick.Abstraction.Base
             asyncActions.Add(update);
         }
 
-        public IEnumerable<AsyncActionUpdate> RetriveAsyncActions()
-        {
-            return asyncActions;
-        }
-
         private object mutex_locker = new object();
         private ObservableCollection<ActionBase> target_list;
         private SynchronizationContext syncContext;
@@ -89,6 +79,7 @@ namespace HakeQuick.Abstraction.Base
         {
             target_list = list;
             syncContext = SynchronizationContext.Current;
+            list.Clear();
             foreach (ActionWithPriorityWrapper wrapper in actions)
                 list.Add(wrapper.Action);
             if (asyncActions.Count <= 0) return COMPLETED_TASK;

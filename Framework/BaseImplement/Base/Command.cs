@@ -20,7 +20,7 @@ namespace HakeQuick.Implementation.Base
             if (ch <= 'Z' && ch >= 'A') return true;
             else if (ch <= '9' && ch >= '0') return true;
             else if (ch <= 'z' && ch >= 'a') return true;
-            else if ("+-*/^&#@(){}[].|".IndexOf(ch) >= 0) return true;
+            else if ("+*^&#@(){}[].|".IndexOf(ch) >= 0) return true;
             return false;
         }
     }

@@ -14,8 +14,6 @@ namespace HakeQuick.Implementation.Base
     {
         IInternalCancellationProvider InternalCancellationProvider { get; }
 
-        IEnumerable<ActionBase> RetriveActions();
-        IEnumerable<AsyncActionUpdate> RetriveAsyncActions();
         Task WaitResults(ObservableCollection<ActionBase> list);
     }
 }

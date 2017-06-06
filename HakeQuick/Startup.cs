@@ -14,6 +14,11 @@ namespace HakeQuick
 {
     public sealed class Startup
     {
+        public Startup()
+        {
+
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddPluginProvider();

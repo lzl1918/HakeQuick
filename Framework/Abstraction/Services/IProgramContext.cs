@@ -18,8 +18,8 @@ namespace HakeQuick.Abstraction.Services
     {
         RECT WindowPosition { get; }
         Process CurrentProcess { get; }
-        IntPtr WindowHandler { get; }
-        IntPtr DesktopHandler { get; }
+        IntPtr WindowHandle { get; }
+        IntPtr DesktopHandle { get; }
 
         int ThreadId { get; }
         int ProcessId { get; }
