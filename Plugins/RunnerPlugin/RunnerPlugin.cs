@@ -41,6 +41,10 @@ namespace RunnerPlugin
         {
             ProcessStartInfo psi = new ProcessStartInfo(exeCommand, exeArgs);
             psi.WorkingDirectory = Helper.CurrentWorkingDirectoryOrDefault(progContext);
+            if(admin)
+            {
+                psi.Verb = "runas";
+            }
             try
             {
                 Process.Start(psi);

@@ -142,6 +142,7 @@ namespace HakeQuick
             Show();
             Activate();
             textbox_input.Focus();
+            Topmost = true;
         }
 
         private void MoveToNextAction()

@@ -26,7 +26,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Border CornerRadius="8" Background="#FFCCCCCC" Margin="10, 10, 10, 0">
-                    <TextBox Name="textbox_input" FontSize="20" Margin="8" Background="Transparent" BorderThickness="0" />
+                    <TextBox Name="textbox_input" FontSize="20" Margin="8" Background="Transparent" BorderThickness="0" InputMethod.PreferredImeState="Off" InputMethod.IsInputMethodEnabled="False"/>
                 </Border>
                 <Grid Grid.Row="1" Height="0">
                 </Grid>

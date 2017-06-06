@@ -76,7 +76,6 @@ namespace HakeQuick.Implementation.Base
             }
             pool.EnterScope();
             IProgramContext context = services.GetService<IProgramContext>();
-            window.ClearInput();
             window.ShowWindow(context);
         }
 
@@ -100,6 +99,7 @@ namespace HakeQuick.Implementation.Base
             {
                 window.TextChanged += OnWindowTextChanged;
                 window.ExecutionRequested += OnWindowExecutionRequested;
+                window.ClearInput();
             }
             else
             {
@@ -140,7 +140,6 @@ namespace HakeQuick.Implementation.Base
         private void OnWindowTextChanged(object sender, TextUpdatedEventArgs e)
         {
             SynchronizationContext syncContext = SynchronizationContext.Current;
-
             Task.Run(async () =>
             {
                 mutex.WaitOne();

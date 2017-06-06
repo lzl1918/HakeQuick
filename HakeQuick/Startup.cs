@@ -26,6 +26,7 @@ namespace HakeQuick
         public void ConfigureComponents(IAppBuilder app)
         {
             app.UseErrorBlocker(blockIfError: true);
+
             app.UsePlugins();
         }
     }
