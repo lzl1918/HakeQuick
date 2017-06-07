@@ -18,11 +18,17 @@ using System.Collections.ObjectModel;
 using System.Windows.Forms.Integration;
 using System.Windows.Interop;
 using HakeQuick.Helpers;
+using System.Runtime.InteropServices;
 
 namespace HakeQuick
 {
     public partial class DefaultWindow : Window, IQuickWindow
     {
+        public static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
+
+        [DllImport("user32.dll")]
+        public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
+
         public string RawInput
         {
             get { return textbox_input.Text; }
@@ -142,7 +148,7 @@ namespace HakeQuick
             Show();
             Activate();
             textbox_input.Focus();
-            Topmost = true;
+            SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, 3);
         }
 
         private void MoveToNextAction()
