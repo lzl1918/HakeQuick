@@ -19,7 +19,7 @@ namespace RunnerPlugin
             IsExecutable = true;
             Title = "运行 - " + run;
             if (path.Length > 0)
-                Subtitle = path + "/" + run;
+                Subtitle = path;
             else
                 Subtitle = run;
             RunCommand = run.ToLower();
