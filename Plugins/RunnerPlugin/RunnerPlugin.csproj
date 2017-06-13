@@ -68,7 +68,9 @@
     <Compile Include="ListedRunnerPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunCommandAction.cs" />
+    <Compile Include="RunnerAction.cs" />
     <Compile Include="RunnerPlugin.cs" />
+    <Compile Include="UpdateRunnerAction.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Framework\Abstraction\Abstraction.csproj">
@@ -98,6 +100,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\reload.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

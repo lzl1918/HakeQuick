@@ -3,6 +3,7 @@ using HakeQuick.Abstraction.Base;
 using HakeQuick.Abstraction.Plugin;
 using HakeQuick.Abstraction.Services;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,9 +12,13 @@ using System.Threading.Tasks;
 
 namespace RunnerPlugin
 {
+    [Identity("runner")]
     public sealed class ListedRunnerPlugin : QuickPlugin
     {
+        internal static ListedRunnerPlugin Instance { get; private set; }
+
         private List<RunCommandAction> actions = new List<RunCommandAction>();
+        private UpdateRunnerAction updateAction = new UpdateRunnerAction();
 
         private static string[] PREDEFINED_COMMANDS = {
             "regedit", "winword", "excel", "powerpnt", "code", "explorer"
@@ -21,6 +26,41 @@ namespace RunnerPlugin
 
         public ListedRunnerPlugin(ICurrentEnvironment env)
         {
+            if (Instance != null)
+                throw new Exception($"cannot create another instance of {nameof(ListedRunnerPlugin)}");
+
+            UpdateConfigurations(env);
+
+            Instance = this;
+        }
+
+        [Action("update")]
+        public ActionUpdateResult UpdateList()
+        {
+            return new ActionUpdateResult(updateAction, ActionPriority.Low);
+        }
+
+        [ExplicitCall]
+        public IEnumerable<ActionUpdateResult> OnUpdate(ICommand command)
+        {
+            List<ActionUpdateResult> updateResult = new List<ActionUpdateResult>();
+
+            string identity = command.Identity;
+            foreach (RunCommandAction action in actions)
+            {
+                if (action.RunCommand.Length >= identity.Length && action.RunCommand.StartsWith(identity))
+                {
+                    updateResult.Add(new ActionUpdateResult(action, ActionPriority.Normal));
+                }
+            }
+
+            return updateResult;
+        }
+
+        internal void UpdateConfigurations(ICurrentEnvironment env)
+        {
+            actions.Clear();
+
             string filename = "runner.json";
             string iconPath = "icons";
             string configPath = Path.Combine(env.ConfigDirectory.FullName, "runner");
@@ -75,24 +115,6 @@ namespace RunnerPlugin
                 stream.Close();
                 stream.Dispose();
             }
-        }
-
-
-        [ExplicitCall]
-        public IEnumerable<ActionUpdateResult> OnUpdate(ICommand command)
-        {
-            List<ActionUpdateResult> updateResult = new List<ActionUpdateResult>();
-
-            string identity = command.Identity;
-            foreach (RunCommandAction action in actions)
-            {
-                if (action.RunCommand.Length >= identity.Length && action.RunCommand.StartsWith(identity))
-                {
-                    updateResult.Add(new ActionUpdateResult(action, ActionPriority.Normal));
-                }
-            }
-
-            return updateResult;
         }
     }
 }

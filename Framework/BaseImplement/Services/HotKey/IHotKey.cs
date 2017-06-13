@@ -13,7 +13,7 @@ namespace HakeQuick.Implementation.Services.HotKey
     {
         event HotKeyEventHandler KeyPressed;
 
-        void BindKey(Key key, KeyFlags flags);
+        void BindKey();
         void UnbindKey();
 
     }

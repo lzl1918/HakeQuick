@@ -22,19 +22,27 @@ namespace HakeQuick.Implementation.Services.HotKey
         private static extern uint GlobalDeleteAtom(uint nAtom);
         #endregion NativeMethods
 
+        private Key bindedKey;
+        private KeyFlags bindedFlags;
         private uint atomID = 0;
 
         public bool KeyBinded { get { return atomID > 0; } }
         public event HotKeyEventHandler KeyPressed;
 
-        public void BindKey(Key key, KeyFlags flags)
+        public HotKey(Key key, KeyFlags flags)
+        {
+            bindedKey = key;
+            bindedFlags = flags;
+        }
+
+        public void BindKey()
         {
             if (KeyBinded)
                 throw new InvalidOperationException("unbind must be called when already binded to a hotkey");
 
             uint hotkeyid = GlobalAddAtom(Guid.NewGuid().ToString());
-            int keycode = KeyInterop.VirtualKeyFromKey(key);
-            RegisterHotKey(IntPtr.Zero, hotkeyid, (uint)flags, (uint)keycode);
+            int keycode = KeyInterop.VirtualKeyFromKey(bindedKey);
+            RegisterHotKey(IntPtr.Zero, hotkeyid, (uint)bindedFlags, (uint)keycode);
             atomID = hotkeyid;
             Application.AddMessageFilter(this);
         }

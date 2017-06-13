@@ -6,6 +6,8 @@ using HakeQuick.Implementation.Services.Tray;
 using HakeQuick.Implementation.Services.ProgramContext;
 using HakeQuick.Abstraction.Services;
 using HakeQuick.Implementation.Services.TerminationNotifier;
+using System.Windows.Forms;
+using HakeQuick.Implementation.Services.HotKey;
 
 namespace HakeQuick.Implementation.Base
 {
@@ -31,6 +33,15 @@ namespace HakeQuick.Implementation.Base
 
         public IHost Build()
         {
+            string log = "";
+            if (services.TryGetService<IHotKeyBuilder>(out IHotKeyBuilder hotkeyBuilder) == false)
+            {
+                log += "hotkey not configured";
+                MessageBox.Show(log);
+            }
+            IHotKey hotkey = hotkeyBuilder.Build();
+            pool.Remove(pool.GetDescriptor<IHotKeyBuilder>());
+            pool.Add(ServiceDescriptor.Singleton<IHotKey>(hotkey));
             return services.CreateInstance<Host>();
         }
 

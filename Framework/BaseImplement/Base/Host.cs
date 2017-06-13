@@ -54,6 +54,7 @@ namespace HakeQuick.Implementation.Base
                 tray.SendNotification(2000, "HakeQuick", "HakeQuick正在运行", ToolTipIcon.Info);
                 terminationNotifier.TerminationNotified += OnTerminationNotified;
                 hotkey.KeyPressed += OnHotKeyPressed;
+                hotkey.BindKey();
                 Application.Run();
             }
             catch

@@ -1,13 +1,9 @@
 ﻿using HakeQuick.Abstraction.Action;
 using HakeQuick.Abstraction.Base;
 using HakeQuick.Abstraction.Plugin;
-using HakeQuick.Abstraction.Services;
-using HakeQuick.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,43 +12,6 @@ namespace RunnerPlugin
 {
     internal static class WinAPI
     {
-    }
-
-    internal sealed class RunnerAction : ModifiableActionBase
-    {
-        private string exeCommand = "";
-        private string exeArgs = "";
-
-        public RunnerAction()
-        {
-            Icon = Assembly.GetExecutingAssembly().LoadImage("RunnerPlugin.Resources.run.png");
-            Title = "运行";
-            Subtitle = "运行新任务";
-            IsExecutable = true;
-        }
-
-        public void UpdateCommand(string command, string args)
-        {
-            exeCommand = command;
-            exeArgs = args;
-        }
-
-        public void Invoke(IProgramContext progContext, bool admin = false)
-        {
-            ProcessStartInfo psi = new ProcessStartInfo(exeCommand, exeArgs);
-            psi.WorkingDirectory = Helper.CurrentWorkingDirectoryOrDefault(progContext);
-            if(admin)
-            {
-                psi.Verb = "runas";
-            }
-            try
-            {
-                Process.Start(psi);
-            }
-            catch
-            {
-            }
-        }
     }
     public sealed class RunnerPlugin : QuickPlugin
     {
