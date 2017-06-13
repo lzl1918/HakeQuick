@@ -9,10 +9,12 @@ namespace RunnerPlugin
 {
     internal sealed class RunCommandAction : ActionBase
     {
+        private bool defaultAsAdmin;
         public string RunCommand { get; }
         private string commandPath;
-        public RunCommandAction(string run, string path, string iconPath)
+        public RunCommandAction(string run, string path, string iconPath, bool admin)
         {
+            defaultAsAdmin = admin;
             path = path ?? "";
             path = path.Trim();
             commandPath = path;
@@ -36,12 +38,15 @@ namespace RunnerPlugin
             }
         }
 
-        public void Invoke(IProgramContext progContext, ICommand command)
+        public void Invoke(IProgramContext progContext, ICommand command, bool admin = false, bool a = false)
         {
+            admin = admin || a || defaultAsAdmin;
             string procname = RunCommand;
             if (commandPath.Length > 0)
                 procname = commandPath;
             ProcessStartInfo psi = new ProcessStartInfo(procname);
+            if (admin)
+                psi.Verb = "runas";
             psi.WorkingDirectory = Helper.CurrentWorkingDirectoryOrDefault(progContext);
             try
             {

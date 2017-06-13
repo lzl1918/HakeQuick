@@ -38,6 +38,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ValueRecord", "ValueRecord"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hake.Extension.ValueRecord", "..\Hake.Extensions\ValueRecord\ValueRecord\Hake.Extension.ValueRecord.csproj", "{905B12D8-A07C-48F2-9164-D366296A3B9B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Addins", "Addins", "{0C384FEC-A3AB-412D-8EDE-8A9A90A5A72E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
