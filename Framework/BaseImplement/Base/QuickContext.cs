@@ -54,6 +54,7 @@ namespace HakeQuick.Abstraction.Base
         private List<AsyncActionUpdate> asyncActions = new List<AsyncActionUpdate>();
 
         private SortedSet<ActionWithPriorityWrapper> actions = new SortedSet<ActionWithPriorityWrapper>(new ActionWithPriorityWrapperComparer());
+        public Dictionary<string, object> SharedData { get; } = new Dictionary<string, object>();
         public ICommand Command { get; }
         public ICancellationProvider CancellationProvider { get { return InternalCancellationProvider; } }
         public IInternalCancellationProvider InternalCancellationProvider { get; }

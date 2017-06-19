@@ -12,6 +12,7 @@ namespace HakeQuick.Abstraction.Base
 {
     public interface IQuickContext : IContext, IDisposable
     {
+        Dictionary<string, object> SharedData { get; }
         ICommand Command { get; }
         ICancellationProvider CancellationProvider { get; }
 
