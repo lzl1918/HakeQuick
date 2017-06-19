@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 namespace HakeQuick.Implementation.Services.CurrentEnvironment
 {
@@ -31,8 +32,16 @@ namespace HakeQuick.Implementation.Services.CurrentEnvironment
             ConfigDirectory = new DirectoryInfo(configdir);
             if (!ConfigDirectory.Exists)
             {
-                Directory.CreateDirectory(configdir);
-                ConfigDirectory = new DirectoryInfo(configdir);
+                try
+                {
+                    Directory.CreateDirectory(configdir);
+                    ConfigDirectory = new DirectoryInfo(configdir);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
         }
     }

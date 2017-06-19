@@ -1,0 +1,7 @@
+﻿{
+  "config": ".\\configs",
+  "hotkey": {
+    "key": "Q",
+    "flags": "Control"
+  }
+}
