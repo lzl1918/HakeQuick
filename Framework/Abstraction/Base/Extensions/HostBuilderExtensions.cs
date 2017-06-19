@@ -1,4 +1,6 @@
-﻿using Hake.Extension.DependencyInjection.Abstraction;
+﻿//#define IGNORE_EXCEPTION
+
+using Hake.Extension.DependencyInjection.Abstraction;
 using System;
 
 namespace HakeQuick.Abstraction.Base
@@ -21,6 +23,7 @@ namespace HakeQuick.Abstraction.Base
         {
             return builder.ConfigureService(services =>
             {
+#if IGNORE_EXCEPTION
                 try
                 {
                     object instance = services.CreateInstance<T>();
@@ -28,14 +31,18 @@ namespace HakeQuick.Abstraction.Base
                 }
                 catch
                 {
-
                 }
+#else
+                object instance = services.CreateInstance<T>();
+                ObjectFactory.InvokeMethod(instance, "ConfigureComponents", services);
+#endif
             });
         }
         public static IHostBuilder ConfigureServices<T>(this IHostBuilder builder)
         {
             return builder.ConfigureService(services =>
             {
+#if IGNORE_EXCEPTION
                 try
                 {
                     object instance = services.CreateInstance<T>();
@@ -43,14 +50,18 @@ namespace HakeQuick.Abstraction.Base
                 }
                 catch
                 {
-
                 }
+#else
+                object instance = services.CreateInstance<T>();
+                ObjectFactory.InvokeMethod(instance, "ConfigureServices", services);
+#endif
             });
         }
         public static IHostBuilder UseConfiguration<T>(this IHostBuilder builder)
         {
             return builder.ConfigureService(services =>
             {
+#if IGNORE_EXCEPTION
                 try
                 {
                     object instance = services.CreateInstance<T>();
@@ -59,8 +70,12 @@ namespace HakeQuick.Abstraction.Base
                 }
                 catch
                 {
-
                 }
+#else
+                object instance = services.CreateInstance<T>();
+                ObjectFactory.InvokeMethod(instance, "ConfigureServices", services);
+                ObjectFactory.InvokeMethod(instance, "ConfigureComponents", services);
+#endif
             });
         }
 

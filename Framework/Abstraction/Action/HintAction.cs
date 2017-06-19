@@ -2,7 +2,7 @@
 
 namespace HakeQuick.Abstraction.Action
 {
-    public class HintAction : ActionBase
+    public class HintAction : ModifiableActionBase
     {
         public HintAction(BitmapImage icon, string title, string subtitle)
         {

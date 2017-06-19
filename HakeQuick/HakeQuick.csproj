@@ -132,6 +132,11 @@
       <Project>{00835387-4f09-43b9-bfe0-68823a15f29b}</Project>
       <Name>BaseImplement</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Services\Chrome.BookmarkSearch\Chrome.BookmarkSearch.csproj">
+      <Project>{b386fbee-8ace-4e0d-9df2-42dee50292fe}</Project>
+      <Name>Chrome.BookmarkSearch</Name>
+      <Private>False</Private>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="tray.ico" />

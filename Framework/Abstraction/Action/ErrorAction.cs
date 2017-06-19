@@ -2,7 +2,7 @@
 
 namespace HakeQuick.Abstraction.Action
 {
-    public class ErrorAction : ActionBase
+    public class ErrorAction : ModifiableActionBase
     {
         public ErrorAction(BitmapImage icon, string title, string subtitle)
         {
