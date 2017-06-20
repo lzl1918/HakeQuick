@@ -20,8 +20,7 @@ namespace HakeQuick.Implementation.Configuration
         {
 
         }
-
-
+        
         public IConfiguration Build()
         {
             if (values == null)
@@ -29,7 +28,11 @@ namespace HakeQuick.Implementation.Configuration
             return new Configuration(values);
         }
 
-
+        public ConfigurationBuilder ReplaceAll(SetRecord record)
+        {
+            values = record;
+            return this;
+        }
         public ConfigurationBuilder AddDefault()
         {
             Assembly ass = Assembly.GetEntryAssembly();
@@ -42,7 +45,7 @@ namespace HakeQuick.Implementation.Configuration
                 if (values == null)
                     values = set;
                 else
-                    CombineValue(values, set);
+                    values.Combine(set);
             }
             else
             {
@@ -61,7 +64,7 @@ namespace HakeQuick.Implementation.Configuration
                 if (values == null)
                     values = set;
                 else
-                    CombineValue(values, set);
+                    values.Combine(set);
             }
             else
             {
@@ -75,28 +78,6 @@ namespace HakeQuick.Implementation.Configuration
                 return AddJson(file);
             else
                 return this;
-        }
-
-        private void CombineValue(SetRecord dest, SetRecord source)
-        {
-            if (dest == null)
-                throw new ArgumentNullException(nameof(dest));
-            if (source == null)
-                throw new ArgumentNullException(nameof(source));
-
-            RecordBase temp;
-            foreach (var pair in source)
-            {
-                if (dest.TryGetValue(pair.Key, out temp))
-                {
-                    if (pair.Value is SetRecord srcset && temp is SetRecord dstset)
-                        CombineValue(dstset, srcset);
-                    else
-                        dest[pair.Key] = pair.Value;
-                }
-                else
-                    dest[pair.Key] = pair.Value;
-            }
         }
     }
 }

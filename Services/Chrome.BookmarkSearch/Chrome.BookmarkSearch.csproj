@@ -69,6 +69,7 @@
     <Compile Include="ChromeBookmarkSearchComponent.cs" />
     <Compile Include="Models\Bookmark.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Hake.Extensions\DependencyInjection\Abstraction\Hake.Extension.DependencyInjection.Abstraction.csproj">
@@ -91,8 +92,14 @@
       <Name>Abstraction</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\..\Helpers\Helpers.csproj">
+      <Project>{a763570a-c121-4b9e-b240-490300a03244}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="default.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
