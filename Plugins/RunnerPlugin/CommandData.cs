@@ -13,5 +13,7 @@ namespace RunnerPlugin
         public string IconPath { get; set; }
         [JsonProperty(PropertyName = "admin", Required = Required.Default)]
         public bool Admin { get; set; }
+        [JsonProperty(PropertyName = "workingdir", Required = Required.Default)]
+        public string WorkingDirectory { get; set; }
     }
 }

@@ -10,11 +10,13 @@ namespace RunnerPlugin
     internal sealed class RunCommandAction : ActionBase
     {
         private bool defaultAsAdmin;
+        private string workingDirectory;
         public string RunCommand { get; }
         private string commandPath;
-        public RunCommandAction(string run, string path, string iconPath, bool admin)
+        public RunCommandAction(string run, string path, string iconPath, bool admin, string workingDirectory)
         {
             defaultAsAdmin = admin;
+            this.workingDirectory = workingDirectory;
             path = path ?? "";
             path = path.Trim();
             commandPath = path;
@@ -47,7 +49,10 @@ namespace RunnerPlugin
             ProcessStartInfo psi = new ProcessStartInfo(procname);
             if (admin)
                 psi.Verb = "runas";
-            psi.WorkingDirectory = Helper.CurrentWorkingDirectoryOrDefault(progContext);
+            if (workingDirectory == null)
+                psi.WorkingDirectory = Helper.CurrentWorkingDirectoryOrDefault(progContext);
+            else
+                psi.WorkingDirectory = workingDirectory;
             try
             {
                 Process.Start(psi);

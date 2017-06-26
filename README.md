@@ -1,9 +1,15 @@
 # Hake Quick
 
+## What's new:
+2017/6/26.1
+- now you can set default working directory to shortcuts
+
 ## Introduction
 A tool adding context menu to program window.
 
-Currently shortcuts are supported.
+Currently supported feature:
+- Shortcuts
+- chrome bookmarks search
 
 ![demo](https://raw.githubusercontent.com/lzl1918/HakeQuick/master/docs/sample.gif)
 
