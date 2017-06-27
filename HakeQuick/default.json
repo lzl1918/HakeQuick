@@ -1,5 +1,6 @@
 ﻿{
   "config": ".\\configs",
+  "log":  ".\\log",
   "hotkey": {
     "key": "Q",
     "flags": "Control"

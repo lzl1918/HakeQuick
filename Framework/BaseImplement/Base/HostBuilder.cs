@@ -8,6 +8,7 @@ using HakeQuick.Abstraction.Services;
 using HakeQuick.Implementation.Services.TerminationNotifier;
 using System.Windows.Forms;
 using HakeQuick.Implementation.Services.HotKey;
+using HakeQuick.Implementation.Services.Logger;
 
 namespace HakeQuick.Implementation.Base
 {
@@ -29,8 +30,7 @@ namespace HakeQuick.Implementation.Base
             app = services.CreateInstance<AppBuilder>();
             pool.Add(ServiceDescriptor.Singleton<IAppBuilder>(app));
         }
-
-
+        
         public IHost Build()
         {
             string log = "";

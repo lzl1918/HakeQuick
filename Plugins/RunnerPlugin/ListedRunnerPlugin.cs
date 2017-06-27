@@ -24,13 +24,13 @@ namespace RunnerPlugin
             "regedit", "winword", "excel", "powerpnt", "code", "explorer"
         };
 
-        public ListedRunnerPlugin(ICurrentEnvironment env)
+        public ListedRunnerPlugin(ICurrentEnvironment env, ILoggerFactory loggerFactory)
         {
             if (Instance != null)
                 throw new Exception($"cannot create another instance of {nameof(ListedRunnerPlugin)}");
 
             UpdateConfigurations(env);
-
+            loggerFactory.CreateLogger("Runner");
             Instance = this;
         }
 

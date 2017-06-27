@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace HakeQuick.Abstraction.Plugin
 {
+
     public abstract class QuickPlugin
     {
 

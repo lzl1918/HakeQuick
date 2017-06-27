@@ -1,6 +1,7 @@
 ﻿using HakeQuick.Abstraction.Action;
 using HakeQuick.Abstraction.Services;
 using HakeQuick.Helpers;
+using System;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -25,11 +26,11 @@ namespace RunnerPlugin
             exeArgs = args;
         }
 
-        public void Invoke(IProgramContext progContext, bool admin = false)
+        public void Invoke(IProgramContext progContext, ILogger runnerLogger, bool admin = false)
         {
             ProcessStartInfo psi = new ProcessStartInfo(exeCommand, exeArgs);
             psi.WorkingDirectory = Helper.CurrentWorkingDirectoryOrDefault(progContext);
-            if(admin)
+            if (admin)
             {
                 psi.Verb = "runas";
             }
@@ -37,8 +38,9 @@ namespace RunnerPlugin
             {
                 Process.Start(psi);
             }
-            catch
+            catch (Exception ex)
             {
+                runnerLogger.LogExceptionAsync(ex);
             }
         }
     }

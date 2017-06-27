@@ -1,6 +1,7 @@
 ﻿using HakeQuick.Abstraction.Action;
 using HakeQuick.Abstraction.Base;
 using HakeQuick.Abstraction.Plugin;
+using HakeQuick.Abstraction.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,11 @@ namespace RunnerPlugin
     public sealed class RunnerPlugin : QuickPlugin
     {
         private RunnerAction runner = new RunnerAction();
+
+        public RunnerPlugin(ILoggerFactory loggerFactory)
+        {
+            loggerFactory.CreateLogger("Runner");
+        }
 
         [IgnoreIdentity("run")]
         public ActionUpdateResult OnUpdate(ICommand command, bool admin = false, string action = "")

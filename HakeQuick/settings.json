@@ -1,6 +1,7 @@
 ﻿{
   // path to config directory
   "config": "G:\\Github\\HakeQuick\\build\\configs",
+  "log": "G:\\Github\\HakeQuick\\build\\log",
   "hotkey": {
     "key": "Q",
 

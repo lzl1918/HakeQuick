@@ -58,7 +58,7 @@ namespace RunnerPlugin
             }
         }
 
-        public void Invoke(IProgramContext progContext, ICommand command, bool admin = false, bool a = false)
+        public void Invoke(IProgramContext progContext, ILogger runnerLogger, ICommand command, bool admin = false, bool a = false)
         {
             admin = admin || a || defaultAsAdmin;
             string procname = RunCommand;
@@ -78,8 +78,9 @@ namespace RunnerPlugin
             {
                 Process.Start(psi);
             }
-            catch
+            catch (Exception ex)
             {
+                runnerLogger.LogExceptionAsync(ex);
             }
         }
     }

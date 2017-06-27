@@ -16,8 +16,9 @@ namespace HakeQuick.Implementation.Services.CurrentEnvironment
         public DirectoryInfo PluginDirectory { get; }
 
         public DirectoryInfo ConfigDirectory { get; }
+        public DirectoryInfo LogDirectory { get; }
 
-        public CurrentEnvironment(string plugin, string config)
+        public CurrentEnvironment(string plugin, string config, string log)
         {
             string current = Directory.GetCurrentDirectory();
             MainDirectory = new DirectoryInfo(current);
@@ -41,7 +42,20 @@ namespace HakeQuick.Implementation.Services.CurrentEnvironment
                 {
                     MessageBox.Show(ex.Message);
                 }
-
+            }
+            string logdir = Path.Combine(current, log);
+            LogDirectory = new DirectoryInfo(logdir);
+            if (!LogDirectory.Exists)
+            {
+                try
+                {
+                    Directory.CreateDirectory(logdir);
+                    LogDirectory = new DirectoryInfo(logdir);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }

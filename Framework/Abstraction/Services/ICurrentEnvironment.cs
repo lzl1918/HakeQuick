@@ -11,6 +11,7 @@ namespace HakeQuick.Abstraction.Services
     {
         DirectoryInfo MainDirectory { get; }
         DirectoryInfo PluginDirectory { get; }
-        DirectoryInfo ConfigDirectory { get; } 
+        DirectoryInfo ConfigDirectory { get; }
+        DirectoryInfo LogDirectory { get; }
     }
 }

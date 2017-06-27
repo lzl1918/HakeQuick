@@ -67,6 +67,7 @@
     <Compile Include="Base\HostBuilder.cs" />
     <Compile Include="Base\InternalInterfaces\IInternalCancellationProvider.cs" />
     <Compile Include="Base\InternalInterfaces\IInternalContext.cs" />
+    <Compile Include="Base\LoggerMatchService.cs" />
     <Compile Include="Base\QuickContext.cs" />
     <Compile Include="Components\ErrorBlocker\ErrorBlocker.cs" />
     <Compile Include="Components\ErrorBlocker\ErrorBlockerExtensions.cs" />
@@ -86,6 +87,9 @@
     <Compile Include="Services\HotKey\IHotKey.cs" />
     <Compile Include="Services\HotKey\IHotKeyBuilder.cs" />
     <Compile Include="Services\HotKey\KeyFlags.cs" />
+    <Compile Include="Services\Logger\FileLogger.cs" />
+    <Compile Include="Services\Logger\Logger.cs" />
+    <Compile Include="Services\Logger\LoggerFactory.cs" />
     <Compile Include="Services\ProgramContext\IProgramContextFactory.cs" />
     <Compile Include="Services\ProgramContext\ProgramContext.cs" />
     <Compile Include="Services\TerminationNotifier\ITerminationNotifier.cs" />

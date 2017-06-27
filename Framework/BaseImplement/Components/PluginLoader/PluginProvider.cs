@@ -242,6 +242,7 @@ namespace HakeQuick.Implementation.Components.PluginLoader
                     foreach (Type type in types)
                     {
                         TypeInfo typeInfo = type.GetTypeInfo();
+
                         if (typeInfo.IsArray == true) continue;
                         if (typeInfo.IsEnum == true) continue;
                         if (typeInfo.IsAbstract == true) continue;
@@ -323,6 +324,7 @@ namespace HakeQuick.Implementation.Components.PluginLoader
                         }
                         if (explictMethods.Count + ignoreIdentityMethods.Count + actionMethods.Count <= 0)
                             continue;
+
                         instance = services.CreateInstance(type);
                         instances.Add(instance);
                         if (explictMethods.Count > 0)
