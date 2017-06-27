@@ -1,8 +1,11 @@
 # Hake Quick
 
 ## What's new:
+2017/6/27.1
+- `ILoggerFactory` and `ILogger` are added to built-in services, plugins can output logs.
+
 2017/6/26.1
-- now you can set default working directory to shortcuts
+- now you can set default working directory to shortcuts.
 
 ## Introduction
 A tool adding context menu to program window.
