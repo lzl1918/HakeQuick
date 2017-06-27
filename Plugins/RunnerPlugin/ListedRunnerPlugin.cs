@@ -82,9 +82,9 @@ namespace RunnerPlugin
                     foreach (CommandData cmd in data)
                     {
                         if (cmd.IconPath != null)
-                            actions.Add(new RunCommandAction(cmd.Command, cmd.ExePath, Path.Combine(iconPath, cmd.IconPath), cmd.Admin, cmd.WorkingDirectory));
+                            actions.Add(new RunCommandAction(cmd.Command, cmd.ExePath, Path.Combine(iconPath, cmd.IconPath), cmd.Admin, cmd.WorkingDirectory, cmd.Args));
                         else
-                            actions.Add(new RunCommandAction(cmd.Command, cmd.ExePath, null, cmd.Admin, cmd.WorkingDirectory));
+                            actions.Add(new RunCommandAction(cmd.Command, cmd.ExePath, null, cmd.Admin, cmd.WorkingDirectory, cmd.Args));
                     }
                 }
                 catch
@@ -103,7 +103,7 @@ namespace RunnerPlugin
                         ExePath = null,
                         IconPath = null
                     });
-                    actions.Add(new RunCommandAction(command, null, null, false, null));
+                    actions.Add(new RunCommandAction(command, null, null, false, null, null));
                 }
                 FileStream stream = File.Create(filename);
                 string json = JsonConvert.SerializeObject(data, Formatting.Indented);
