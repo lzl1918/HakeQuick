@@ -22,12 +22,11 @@ namespace HakeQuick.Implementation.Services.Logger
             if (!LogFile.Exists)
             {
                 stream = File.Create(filePath);
+                stream.Flush();
+                stream.Dispose();
                 LogFile = new FileInfo(filePath);
             }
-            else
-            {
-                stream = LogFile.Open(FileMode.Append, FileAccess.Write);
-            }
+            stream = LogFile.Open(FileMode.Append, FileAccess.Write, FileShare.Read);
             writer = new StreamWriter(stream);
             Initialized = true;
         }
@@ -41,15 +40,16 @@ namespace HakeQuick.Implementation.Services.Logger
             writer.Dispose();
             stream.Close();
             stream.Dispose();
+            Disposed = true;
         }
 
-        private static int flushCountdown = 5;
+        private static int flushCountdown = 1;
         public static Task LogAsync(string message)
         {
             flushCountdown--;
             if (flushCountdown <= 0)
             {
-                flushCountdown = 5;
+                flushCountdown = 1;
                 return writer.WriteLineAsync(message).ContinueWith(tsk => writer.Flush());
             }
             else
