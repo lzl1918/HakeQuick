@@ -15,7 +15,7 @@ namespace HakeQuick.Implementation.Base
             ILoggerType = typeof(ILogger);
         }
 
-        private static void OnParameterMatching(object sender, MatchingParameterEventArgs e)
+        private static void OnParameterMatching(object sender, ParameterMatchingEventArgs e)
         {
             if (e.ParameterType != ILoggerType)
                 return;
