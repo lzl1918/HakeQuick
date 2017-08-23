@@ -1,4 +1,5 @@
 ﻿using Hake.Extension.ValueRecord;
+using Hake.Extension.ValueRecord.Mapper;
 using HakeQuick.Abstraction.Action;
 using HakeQuick.Abstraction.Base;
 using HakeQuick.Abstraction.Plugin;
@@ -75,7 +76,7 @@ namespace RunnerPlugin
                 stream.Dispose();
                 try
                 {
-                    List<CommandData> data = CommandData.ReadList(record);
+                    List<CommandData> data = ObjectMapper.ToObject<List<CommandData>>(record);
                     foreach (CommandData cmd in data)
                     {
                         if (cmd.IconPath != null)
@@ -84,7 +85,7 @@ namespace RunnerPlugin
                             actions.Add(new RunCommandAction(cmd.Command, cmd.ExePath, null, cmd.Admin, cmd.WorkingDirectory, cmd.Args));
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
 
                 }

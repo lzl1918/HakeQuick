@@ -86,7 +86,6 @@
     <Compile Include="Services\HotKey\HotKeyExtensions.cs" />
     <Compile Include="Services\HotKey\IHotKey.cs" />
     <Compile Include="Services\HotKey\IHotKeyBuilder.cs" />
-    <Compile Include="Services\HotKey\KeyFlags.cs" />
     <Compile Include="Services\Logger\FileLogger.cs" />
     <Compile Include="Services\Logger\Logger.cs" />
     <Compile Include="Services\Logger\LoggerFactory.cs" />

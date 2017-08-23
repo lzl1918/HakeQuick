@@ -5,5 +5,7 @@ namespace HakeQuick.Abstraction.Base
     public interface IConfiguration
     {
         RecordBase Root { get; }
+
+        QuickConfig Options { get; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HakeQuick.Implementation.Services.HotKey
+namespace HakeQuick.Abstraction.Base
 {
     [Flags]
     public enum KeyFlags : uint
