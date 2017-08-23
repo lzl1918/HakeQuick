@@ -20,8 +20,8 @@ namespace HakeQuick.Implementation.Base
 
         public HostBuilder()
         {
-            pool = Hake.Extension.DependencyInjection.Implementations.Implementation.CreateServiceCollection();
-            services = Hake.Extension.DependencyInjection.Implementations.Implementation.CreateServiceProvider(pool);
+            pool = Hake.Extension.DependencyInjection.Implementation.CreateServiceCollection();
+            services = Hake.Extension.DependencyInjection.Implementation.CreateServiceProvider(pool);
             pool.Add(ServiceDescriptor.Singleton<IServiceCollection>(pool));
             pool.Add(ServiceDescriptor.Singleton<IServiceProvider>(services));
 

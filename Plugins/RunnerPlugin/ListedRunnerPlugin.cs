@@ -1,8 +1,8 @@
-﻿using HakeQuick.Abstraction.Action;
+﻿using Hake.Extension.ValueRecord;
+using HakeQuick.Abstraction.Action;
 using HakeQuick.Abstraction.Base;
 using HakeQuick.Abstraction.Plugin;
 using HakeQuick.Abstraction.Services;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -70,15 +70,12 @@ namespace RunnerPlugin
             if (File.Exists(filename))
             {
                 FileStream stream = File.Open(filename, FileMode.Open);
-                StreamReader reader = new StreamReader(stream);
-                string content = reader.ReadToEnd();
-                reader.Close();
-                reader.Dispose();
+                ListRecord record = Hake.Extension.ValueRecord.Json.Converter.ReadJson(stream) as ListRecord;
                 stream.Close();
                 stream.Dispose();
                 try
                 {
-                    List<CommandData> data = JsonConvert.DeserializeObject<List<CommandData>>(content);
+                    List<CommandData> data = CommandData.ReadList(record);
                     foreach (CommandData cmd in data)
                     {
                         if (cmd.IconPath != null)
@@ -106,7 +103,8 @@ namespace RunnerPlugin
                     actions.Add(new RunCommandAction(command, null, null, false, null, null));
                 }
                 FileStream stream = File.Create(filename);
-                string json = JsonConvert.SerializeObject(data, Formatting.Indented);
+                ListRecord record = GetCommandsRecord(data);
+                string json = Hake.Extension.ValueRecord.Json.Converter.Json(record);
                 StreamWriter writer = new StreamWriter(stream);
                 writer.Write(json);
                 writer.Flush();
@@ -115,6 +113,30 @@ namespace RunnerPlugin
                 stream.Close();
                 stream.Dispose();
             }
+        }
+
+        private ListRecord GetCommandsRecord(List<CommandData> commands)
+        {
+            ListRecord record = new ListRecord();
+            ListRecord argsRecord;
+            SetRecord commandRecord;
+            foreach (CommandData command in commands)
+            {
+                commandRecord = new SetRecord();
+                commandRecord.Add("command", new ScalerRecord(command.Command));
+                commandRecord.Add("path", new ScalerRecord(command.ExePath));
+                commandRecord.Add("icon", new ScalerRecord(command.IconPath));
+                commandRecord.Add("workingdir", new ScalerRecord(command.WorkingDirectory));
+                commandRecord.Add("admin", new ScalerRecord(command.Admin));
+                argsRecord = new ListRecord();
+                if (command.Args != null)
+                    foreach (string arg in command.Args)
+                        argsRecord.Add(new ScalerRecord(arg));
+                commandRecord.Add("args", argsRecord);
+
+                record.Add(commandRecord);
+            }
+            return record;
         }
     }
 }

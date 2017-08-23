@@ -4,8 +4,6 @@ using HakeQuick.Implementation.Base;
 using HakeQuick.Implementation.Configuration;
 using HakeQuick.Implementation.Services.HotKey;
 using HakeQuick.Implementation.Services.Logger;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;

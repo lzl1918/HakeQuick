@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Hake.Extension.Pipeline.Implementations;
 using HakeQuick.Abstraction.Base;
+using Hake.Extension.Pipeline.Abstraction;
 
 namespace HakeQuick.Implementation.Base
 {

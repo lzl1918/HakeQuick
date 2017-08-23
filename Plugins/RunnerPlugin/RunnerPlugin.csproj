@@ -47,10 +47,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -73,6 +69,10 @@
     <Compile Include="UpdateRunnerAction.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\ValueRecord\Hake.Extension.ValueRecord\Hake.Extension.ValueRecord.csproj">
+      <Project>{905b12d8-a07c-48f2-9164-d366296a3b9b}</Project>
+      <Name>Hake.Extension.ValueRecord</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Framework\Abstraction\Abstraction.csproj">
       <Project>{74f1b85e-0d29-4642-999e-187930f177de}</Project>
       <Name>Abstraction</Name>

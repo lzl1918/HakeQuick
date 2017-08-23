@@ -16,11 +16,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipeline", "Pipeline", "{43
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstraction", "Framework\Abstraction\Abstraction.csproj", "{74F1B85E-0D29-4642-999E-187930F177DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hake.Extension.DependencyInjection.Abstraction", "..\Hake.Extensions\DependencyInjection\Abstraction\Hake.Extension.DependencyInjection.Abstraction.csproj", "{399FAFC3-C113-4B0B-BBC6-CD7D051864E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hake.Extension.DependencyInjection", "Extensions\DependencyInjection\Hake.Extension.DependencyInjection\Hake.Extension.DependencyInjection.csproj", "{399FAFC3-C113-4B0B-BBC6-CD7D051864E2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hake.Extension.DependencyInjection.Implementations", "..\Hake.Extensions\DependencyInjection\Implementations\Hake.Extension.DependencyInjection.Implementations.csproj", "{502D4BDA-8D93-4552-A23B-9A8FC6705308}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hake.Extension.Pipeline.Abstraction", "..\Hake.Extensions\Pipeline\Abstraction\Hake.Extension.Pipeline.Abstraction.csproj", "{4F01612A-436B-43DE-A119-6F33B85DBD19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hake.Extension.Pipeline", "Extensions\Pipeline\Hake.Extension.Pipeline\Hake.Extension.Pipeline.csproj", "{4F01612A-436B-43DE-A119-6F33B85DBD19}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseImplement", "Framework\BaseImplement\BaseImplement.csproj", "{00835387-4F09-43B9-BFE0-68823A15F29B}"
 EndProject
@@ -36,7 +34,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunnerPlugin", "Plugins\Run
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ValueRecord", "ValueRecord", "{D5AD748E-A4AC-4339-B5FF-577755804494}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hake.Extension.ValueRecord", "..\Hake.Extensions\ValueRecord\ValueRecord\Hake.Extension.ValueRecord.csproj", "{905B12D8-A07C-48F2-9164-D366296A3B9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hake.Extension.ValueRecord", "Extensions\ValueRecord\Hake.Extension.ValueRecord\Hake.Extension.ValueRecord.csproj", "{905B12D8-A07C-48F2-9164-D366296A3B9B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{0C384FEC-A3AB-412D-8EDE-8A9A90A5A72E}"
 EndProject
@@ -74,14 +72,6 @@ Global
 		{399FAFC3-C113-4B0B-BBC6-CD7D051864E2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{399FAFC3-C113-4B0B-BBC6-CD7D051864E2}.Release|x64.ActiveCfg = Release|Any CPU
 		{399FAFC3-C113-4B0B-BBC6-CD7D051864E2}.Release|x64.Build.0 = Release|Any CPU
-		{502D4BDA-8D93-4552-A23B-9A8FC6705308}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{502D4BDA-8D93-4552-A23B-9A8FC6705308}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{502D4BDA-8D93-4552-A23B-9A8FC6705308}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{502D4BDA-8D93-4552-A23B-9A8FC6705308}.Debug|x64.Build.0 = Debug|Any CPU
-		{502D4BDA-8D93-4552-A23B-9A8FC6705308}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{502D4BDA-8D93-4552-A23B-9A8FC6705308}.Release|Any CPU.Build.0 = Release|Any CPU
-		{502D4BDA-8D93-4552-A23B-9A8FC6705308}.Release|x64.ActiveCfg = Release|Any CPU
-		{502D4BDA-8D93-4552-A23B-9A8FC6705308}.Release|x64.Build.0 = Release|Any CPU
 		{4F01612A-436B-43DE-A119-6F33B85DBD19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4F01612A-436B-43DE-A119-6F33B85DBD19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F01612A-436B-43DE-A119-6F33B85DBD19}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -147,7 +137,6 @@ Global
 		{4315BB97-4874-4CFA-BFB3-3D8E1505C83B} = {5DA32049-54EA-475F-91F9-146419DD3B81}
 		{74F1B85E-0D29-4642-999E-187930F177DE} = {A9D9C0D7-AB43-4B78-AEF9-CFEE44782DD1}
 		{399FAFC3-C113-4B0B-BBC6-CD7D051864E2} = {A616EFEE-0983-4DD1-AC32-707D94A46401}
-		{502D4BDA-8D93-4552-A23B-9A8FC6705308} = {A616EFEE-0983-4DD1-AC32-707D94A46401}
 		{4F01612A-436B-43DE-A119-6F33B85DBD19} = {4315BB97-4874-4CFA-BFB3-3D8E1505C83B}
 		{00835387-4F09-43B9-BFE0-68823A15F29B} = {A9D9C0D7-AB43-4B78-AEF9-CFEE44782DD1}
 		{3173C479-CA89-4FED-AB2E-CA9886B99616} = {94029E4F-460E-473E-8361-BB01A24DD0B2}

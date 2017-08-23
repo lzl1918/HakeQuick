@@ -64,10 +64,9 @@
     <Compile Include="ValueRecordHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Hake.Extensions\ValueRecord\ValueRecord\Hake.Extension.ValueRecord.csproj">
+    <ProjectReference Include="..\Extensions\ValueRecord\Hake.Extension.ValueRecord\Hake.Extension.ValueRecord.csproj">
       <Project>{905b12d8-a07c-48f2-9164-d366296a3b9b}</Project>
       <Name>Hake.Extension.ValueRecord</Name>
-      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
