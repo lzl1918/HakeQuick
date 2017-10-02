@@ -54,9 +54,11 @@
     </Reference>
     <Reference Include="Hake.Extension.Pipeline, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Hake.Extension.Pipeline.1.0.0\lib\net452\Hake.Extension.Pipeline.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Hake.Extension.ValueRecord, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Hake.Extension.ValueRecord.1.0.0\lib\net452\Hake.Extension.ValueRecord.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
