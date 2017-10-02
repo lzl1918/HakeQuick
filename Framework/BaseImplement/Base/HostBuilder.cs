@@ -9,6 +9,7 @@ using HakeQuick.Implementation.Services.TerminationNotifier;
 using System.Windows.Forms;
 using HakeQuick.Implementation.Services.HotKey;
 using HakeQuick.Implementation.Services.Logger;
+using Hake.Extension.DependencyInjection;
 
 namespace HakeQuick.Implementation.Base
 {
@@ -21,7 +22,7 @@ namespace HakeQuick.Implementation.Base
         public HostBuilder()
         {
             pool = Hake.Extension.DependencyInjection.Implementation.CreateServiceCollection();
-            services = Hake.Extension.DependencyInjection.Implementation.CreateServiceProvider(pool);
+            services = pool.CreateProvider();
             pool.Add(ServiceDescriptor.Singleton<IServiceCollection>(pool));
             pool.Add(ServiceDescriptor.Singleton<IServiceProvider>(services));
 

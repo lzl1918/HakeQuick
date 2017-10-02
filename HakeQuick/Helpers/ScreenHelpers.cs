@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace HakeQuick.Helpers
+{
+    public enum DpiType
+    {
+        Effective = 0,
+        Angular = 1,
+        Raw = 2,
+    }
+
+    public static class ScreenHelpers
+    {
+        public static List<uint> GetScreenDpis(IEnumerable<Screen> screens)
+        {
+            List<uint> dpis = new List<uint>();
+            uint dpix, dpiy;
+            foreach(Screen screen in screens)
+            {
+                GetDpi(screen, DpiType.Effective, out dpix, out dpiy);
+                dpis.Add(dpix);
+            }
+            return dpis;
+        }
+
+        public static void GetDpi(this Screen screen, DpiType dpiType, out uint dpiX, out uint dpiY)
+        {
+            var pnt = new System.Drawing.Point(screen.Bounds.Left + 1, screen.Bounds.Top + 1);
+            var mon = MonitorFromPoint(pnt, 2/*MONITOR_DEFAULTTONEAREST*/);
+            GetDpiForMonitor(mon, dpiType, out dpiX, out dpiY);
+        }
+
+        //https://msdn.microsoft.com/en-us/library/windows/desktop/dd145062(v=vs.85).aspx
+        [DllImport("User32.dll")]
+        private static extern IntPtr MonitorFromPoint([In]System.Drawing.Point pt, [In]uint dwFlags);
+
+        //https://msdn.microsoft.com/en-us/library/windows/desktop/dn280510(v=vs.85).aspx
+        [DllImport("Shcore.dll")]
+        private static extern IntPtr GetDpiForMonitor([In]IntPtr hmonitor, [In]DpiType dpiType, [Out]out uint dpiX, [Out]out uint dpiY);
+    }
+}

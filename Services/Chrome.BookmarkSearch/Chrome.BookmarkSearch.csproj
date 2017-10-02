@@ -52,6 +52,12 @@
     <Reference Include="ChnCharInfo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=18f031bd02e5e291, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.International.Converters.PinYinConverter.1.0.0\lib\ChnCharInfo.dll</HintPath>
     </Reference>
+    <Reference Include="Hake.Extension.Pipeline, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Hake.Extension.Pipeline.1.0.0\lib\net452\Hake.Extension.Pipeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Hake.Extension.ValueRecord, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Hake.Extension.ValueRecord.1.0.0\lib\net452\Hake.Extension.ValueRecord.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -72,18 +78,6 @@
     <Compile Include="SearchConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Extensions\DependencyInjection\Hake.Extension.DependencyInjection\Hake.Extension.DependencyInjection.csproj">
-      <Project>{399fafc3-c113-4b0b-bbc6-cd7d051864e2}</Project>
-      <Name>Hake.Extension.DependencyInjection</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extensions\Pipeline\Hake.Extension.Pipeline\Hake.Extension.Pipeline.csproj">
-      <Project>{4f01612a-436b-43de-a119-6f33b85dbd19}</Project>
-      <Name>Hake.Extension.Pipeline</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extensions\ValueRecord\Hake.Extension.ValueRecord\Hake.Extension.ValueRecord.csproj">
-      <Project>{905b12d8-a07c-48f2-9164-d366296a3b9b}</Project>
-      <Name>Hake.Extension.ValueRecord</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Framework\Abstraction\Abstraction.csproj">
       <Project>{74F1B85E-0D29-4642-999E-187930F177DE}</Project>
       <Name>Abstraction</Name>

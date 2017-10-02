@@ -363,7 +363,9 @@ namespace HakeQuick.Implementation.Components.PluginLoader
                         }
                     }
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                }
             }
         }
 

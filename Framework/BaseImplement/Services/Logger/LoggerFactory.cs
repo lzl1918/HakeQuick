@@ -20,19 +20,21 @@ namespace HakeQuick.Implementation.Services.Logger
             });
         }
     }
+
     internal sealed class LoggerFactory : ILoggerFactory, IDisposable
     {
-        private IServiceProvider services;
-        private Dictionary<string, ILogger> loggers = new Dictionary<string, ILogger>();
-        private ILogger internalLogger;
+        private readonly IServiceProvider services;
+        private readonly Dictionary<string, ILogger> loggers;
+        private readonly ILogger internalLogger;
+
         public LoggerFactory(IServiceProvider services)
         {
             this.services = services;
-
-            internalLogger = CreateLogger("LoggerFactory");
+            loggers = new Dictionary<string, ILogger>();
+            internalLogger = this.CreateLogger<LoggerFactory>();
         }
 
-        public ILogger CreateLogger(string category)
+        public ILogger GetLogger(string category)
         {
             if (category == null)
                 throw new ArgumentNullException(nameof(category));
@@ -41,8 +43,19 @@ namespace HakeQuick.Implementation.Services.Logger
             if (loggers.TryGetValue(category, out ILogger logger))
                 return logger;
             else
+                return null;
+        }
+        public ILogger CreateLogger(string category)
+        {
+            if (category == null)
+                throw new ArgumentNullException(nameof(category));
+            string rawCategoryName = category;
+            category = category.ToLower();
+            if (loggers.TryGetValue(category, out ILogger logger))
+                return logger;
+            else
             {
-                IReadOnlyDictionary<string, object> args = new Dictionary<string, object>() { ["category"] = rawCate };
+                IReadOnlyDictionary<string, object> args = new Dictionary<string, object>() { ["category"] = rawCategoryName };
                 ILogger createdLogger = services.CreateInstance<Logger>(args);
                 loggers.Add(category, createdLogger);
                 if (internalLogger != null)
@@ -50,17 +63,6 @@ namespace HakeQuick.Implementation.Services.Logger
                 return createdLogger;
             }
         }
-
-        public ILogger GetLogger(string category)
-        {
-            if (category == null)
-                throw new ArgumentNullException(nameof(category));
-            if (loggers.TryGetValue(category, out ILogger logger))
-                return logger;
-            else
-                return null;
-        }
-
         public bool RemoveLogger(ILogger logger)
         {
             string key = null;
@@ -77,9 +79,9 @@ namespace HakeQuick.Implementation.Services.Logger
             else
                 return loggers.Remove(key);
         }
-
         public bool RemoveLogger(string category)
         {
+            category = category.ToLower();
             return loggers.Remove(category);
         }
 
@@ -95,14 +97,8 @@ namespace HakeQuick.Implementation.Services.Logger
                 disposedValue = true;
             }
         }
-        ~LoggerFactory()
-        {
-            Dispose(false);
-        }
-        public void Dispose()
-        {
-            Dispose(true);
-        }
+        ~LoggerFactory() => Dispose(false);
+        public void Dispose() => Dispose(true);
         #endregion
     }
 }

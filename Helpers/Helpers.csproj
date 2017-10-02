@@ -47,6 +47,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hake.Extension.ValueRecord, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hake.Extension.ValueRecord.1.0.0\lib\net452\Hake.Extension.ValueRecord.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,10 +67,7 @@
     <Compile Include="ValueRecordHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Extensions\ValueRecord\Hake.Extension.ValueRecord\Hake.Extension.ValueRecord.csproj">
-      <Project>{905b12d8-a07c-48f2-9164-d366296a3b9b}</Project>
-      <Name>Hake.Extension.ValueRecord</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -52,6 +52,8 @@ namespace HakeQuick
             Loaded += OnLoaded;
         }
 
+       
+
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             hwnd = new WindowInteropHelper(this).Handle;
@@ -134,17 +136,24 @@ namespace HakeQuick
         {
             if (IsVisible == true)
                 return;
+            System.Windows.Forms.Screen[] screens = System.Windows.Forms.Screen.AllScreens;
+            List<uint> dpis = ScreenHelpers.GetScreenDpis(screens);
             RECT position = context.WindowPosition;
             double ttop = position.Top + 50;
-            double halfwidthdiff = ((position.Right - position.Left) - Width) / 2;
+            double windowWidth = ActualWidth;
+            if (windowWidth <= 0)
+                windowWidth = Width;
+            uint scale = dpis[0] / 96;
+            windowWidth *= scale;
+            double halfwidthdiff = ((position.Right - position.Left) - windowWidth) / 2;
             double tleft = position.Left + halfwidthdiff;
-            if (tleft < 0 && tleft + Width > 0)
-                tleft = -(Width + 50);
+            if (tleft < 0 && tleft + windowWidth > 0)
+                tleft = -(windowWidth + 50);
 
             if (ttop < 50)
                 ttop = 50;
-            Left = tleft;
-            Top = ttop;
+            Left = tleft / scale;
+            Top = ttop / scale;
             Show();
             Activate();
             textbox_input.Focus();
